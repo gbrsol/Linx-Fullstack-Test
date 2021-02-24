@@ -1,4 +1,3 @@
-const ProductsDAO = require("../models/ProductsDAO")
 module.exports.get_on_sale = function(application, request, response)
 {
     var ProductsDAO = new application.app.models.ProductsDAO();

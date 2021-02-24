@@ -9,15 +9,12 @@ const $ = require( "jquery" )( window );
 
 const app = express();
 app.set('view engine','ejs');
-app.set('views','./app/views');
+app.set('views','./frontend/views');
 
-app.use(express.static('./app/public/'));
-app.use(bodyParser.urlencoded({extended:true}));
 //app.use(expressValidator());
 
 consign()
-    .include('app/routes')
-    .then('app/models')
-    .then('app/controllers')
+    .include('app/backend')
+    .then('app/frontend')
     .into(app);
 module.exports = app;
