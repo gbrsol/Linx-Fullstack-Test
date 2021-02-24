@@ -1,9 +1,13 @@
-var express = require('express');
-var consign = require('consign');
-var bodyParser = require('body-parser');
-var expressValidator = require('express-validator');
+const express = require('express');
+const consign = require('consign');
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const { JSDOM } = require( "jsdom" );
+const { window } = new JSDOM( "" );
+const $ = require( "jquery" )( window );
 
-var app = express();
+
+const app = express();
 app.set('view engine','ejs');
 app.set('views','./app/views');
 
