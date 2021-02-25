@@ -42,7 +42,7 @@ package.json
 ## About the code
 
 - Many of the codes here could be optimized(looking at you timeouts), but unfortunately I'm not very knowledgeable with async and promises;
-- The only css used together with my own is [Flickity](https://flickity.metafizzy.co/), used for carousels;
+- The only css used together with my own is [Flickity](https://flickity.metafizzy.co/), an API used for carousels;
 - The MVC architecture was respected and used in most of the project.
 
 ## License
