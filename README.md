@@ -39,5 +39,10 @@ package.json
 - Run the script on 'Script_PopulateDB' named 'populateDB.js';
 - Run Node.js command 'node app' on root directory.
 
+## About the code
+
+- Many of the codes here could be optimized(looking at you timeouts), but unfortunately I'm not very knowledgeable with async and promises;
+- The only css used together with my own is [Flickity](https://flickity.metafizzy.co/), used for carousels.
+
 ## License
 GNU General Public License v3.0
