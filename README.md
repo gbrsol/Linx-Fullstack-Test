@@ -36,8 +36,8 @@ package.json
 ## Instructions
 - Download the repository;
 - Download MongoDB on your computer;
-- Run the script on 'Script_PopulateDB' named populateDB.js;
-- Run Node.js command 'node app' on root folder.
+- Run the script on 'Script_PopulateDB' named 'populateDB.js';
+- Run Node.js command 'node app' on root directory.
 
 ## License
 GNU General Public License v3.0
