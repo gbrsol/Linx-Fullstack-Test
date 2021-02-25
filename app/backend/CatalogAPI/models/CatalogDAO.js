@@ -1,53 +1,64 @@
-const readline = require("readline")
-const fs = require("fs")
-
-function CatalogDAO()
+function CatalogDAO(connection)
 {
-    this.products = []
+    this._connection = connection()
 }
 
-CatalogDAO.prototype.getOnSale = function (request, response)
-{
-
-}
-
-CatalogDAO.prototype.getBestSellers = function(request, response)
-{
-
-}
-
-let readCatalog =  async function()
-{
-    const readInterface = readline.createInterface({
-        input: fs.createReadStream('../data/catalog.json'),
-        output: process.stdout,
-        console: false
-    })
-    readInterface.on('line', (line) => {
-        this.products.add(line)
-    })
-
-}
-
-let populateDatabase = async function(request, response)
-{
-    this.readJSON().then( ()=> {
-        //insert
-    })
-}
-
-module.exports.get = function(application, request, response, id)
+module.exports.get = function(request, response, id, type=0) // treating 0 for complete, 1 for compact
 {
     if(id)
     {
         //busca 1
+        this._connection.open(function(err, mongoclient){
+            mongoclient.collection("catalog", function(err, collection){
+                collection.find({id: id, status: 'AVAIBLE'}).toArray(function(err, result){
+                    if(!type) 
+                        response.send(result)//{'name': result.name, 'price': result.price, 'status':result.status, 'categories': result.categories}
+                }); 
+                mongoclient.close();
+            });
+        });
     }
     else {
         //busca tudo
+        this._connection.open(function(err, mongoclient){
+            mongoclient.collection("catalog", function(err, collection){
+                collection.find({}).toArray(function(err, result){
+                    if(!type) 
+                        response.send(result)
+                });
+                mongoclient.close();
+            });
+        });
     }
+}
+
+CatalogDAO.prototype.getOnSale = function (request, response, limit)
+{
+    this._connection.open(function(err, mongoclient){
+        mongoclient.collection("catalog", function(err, collection){
+            collection.find({id: id, status: 'AVAIBLE'}).toArray(function(err, result){
+                if(!type) 
+                    response.send(result)
+            });
+            mongoclient.close();
+        });
+    });
+}
+
+CatalogDAO.prototype.getBestSellers = function(request, response, limit)
+{
+    this._connection.open(function(err, mongoclient){
+        mongoclient.collection("catalog", function(err, collection){
+            collection.find({id: id, status: 'AVAIBLE'}).toArray(function(err, result){
+                if(!type) 
+                    response.send(result)
+            });
+            mongoclient.close();
+        });
+    });
 }
 
 module.exports = function()
 {
-    return ProductsDAO
+    return CatalogDAO
 }
