@@ -1,6 +1,7 @@
 function CatalogDAO(connection)
 {
     this._connection = connection()
+    console.log('DAO Has connection')
 }
 
 module.exports.get = function(request, response, id, type=0) // treating 0 for complete, 1 for compact
@@ -10,52 +11,67 @@ module.exports.get = function(request, response, id, type=0) // treating 0 for c
         //busca 1
         this._connection.open(function(err, mongoclient){
             mongoclient.collection("catalog", function(err, collection){
-                collection.find({id: id, status: 'AVAIBLE'}).toArray(function(err, result){
-                    if(!type) 
-                        response.send(result)//{'name': result.name, 'price': result.price, 'status':result.status, 'categories': result.categories}
-                }); 
+                if(type)
+                {
+                    collection.find({id: id, status: 'AVAIBLE'}).toArray(function(err, result){ //{projection:{ _id: 0, name: 1, price: 2, status: 3, ​categories: 4​}}
+                        return result;
+                    });
+                }
+                else
+                {
+                    collection.find({id: id, status: 'AVAIBLE'}).toArray(function(err, result){
+                        return result;
+                    });
+                }
                 mongoclient.close();
             });
         });
     }
-    else {
-        //busca tudo
-        this._connection.open(function(err, mongoclient){
-            mongoclient.collection("catalog", function(err, collection){
-                collection.find({}).toArray(function(err, result){
-                    if(!type) 
-                        response.send(result)
+}
+
+CatalogDAO.prototype.getOnSale = function (request, response)
+{
+    const fs = require('fs');
+    
+    this._connection.open(function(err, mongoclient){
+        mongoclient.collection("catalog", function(err, collection){
+            collection.find({id: id, status: 'AVAIBLE'}).toArray(function(err, result){
+                var final = []
+                for(var i = 0; i < result.length; i++)
+                    final.push(result[i].id)
+                fs.writeFile('Linx-Fullstack-Test/app/frontend/public/ranking/pricereduction.json', final, function (err) {
+                    if(err) 
+                        return console.log(err);
                 });
-                mongoclient.close();
-            });
-        });
-    }
-}
-
-CatalogDAO.prototype.getOnSale = function (request, response, limit)
-{
-    this._connection.open(function(err, mongoclient){
-        mongoclient.collection("catalog", function(err, collection){
-            collection.find({id: id, status: 'AVAIBLE'}).toArray(function(err, result){
-                if(!type) 
-                    response.send(result)
             });
             mongoclient.close();
         });
     });
 }
 
-CatalogDAO.prototype.getBestSellers = function(request, response, limit)
+CatalogDAO.prototype.getBestSellers = function(request, response)
 {
+    const fs = require('fs');
     this._connection.open(function(err, mongoclient){
         mongoclient.collection("catalog", function(err, collection){
-            collection.find({id: id, status: 'AVAIBLE'}).toArray(function(err, result){
-                if(!type) 
-                    response.send(result)
+            collection.find({id: id, status: 'AVAIBLE'}).sort({"chave":-1}).toArray(function(err, result){
+                var final = []
+                for(var i = 0; i < result.length; i++)
+                    final.push(result[i].id)
+                fs.writeFile('Linx-Fullstack-Test/app/frontend/public/ranking/mostpopular.json', final, function (err) {
+                    if(err) 
+                        return console.log(err);
+                });
             });
             mongoclient.close();
         });
     });
+}
+
+CatalogDAO.prototype.writeRanking = async function(request, response)
+{
+    await this.getBestSellers(request, response)
+    await this.getOnSale(request, response)
 }
 
 module.exports = function()
