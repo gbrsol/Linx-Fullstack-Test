@@ -40,8 +40,8 @@ module.exports.endpoint = async function(application, request, response, maxProd
     var catalog = application.app.backend.controllers.catalog
 
     for(json in mostpopular_ids)
-        await mostpopular_data.push(application, request, response,catalog.get(json))
+        await mostpopular_data.push(application, request, response,catalog.get(json.id))
     for(json in pricereduction_data)
-        await pricereduction_data.push(application, request, response,catalog.get(json))
+        await pricereduction_data.push(application, request, response,catalog.get(json.id))
     response.render('index', {pricereduction: pricereduction_data, mostpopular: mostpopular_data})
 }

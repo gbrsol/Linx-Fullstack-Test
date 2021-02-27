@@ -1,7 +1,7 @@
 function CatalogDAO(connection)
 {
+    console.log('DAO Has connection '+ this._connection)
     this._connection = connection()
-    console.log('DAO Has connection')
 }
 
 module.exports.get = function(request, response, id, type=0) // treating 0 for complete, 1 for compact
@@ -35,11 +35,12 @@ CatalogDAO.prototype.getOnSale = function (request, response)
     
     this._connection.open(function(err, mongoclient){
         mongoclient.collection("catalog", function(err, collection){
-            collection.find({id: id, status: 'AVAIBLE'}).toArray(function(err, result){
+            collection.find({status: 'AVAIBLE'}).toArray(function(err, result){
                 var final = []
                 for(var i = 0; i < result.length; i++)
                     final.push(result[i].id)
-                fs.writeFile('Linx-Fullstack-Test/app/frontend/public/ranking/pricereduction.json', final, function (err) {
+                fs.writeFile('app/frontend/public/ranking/pricereduction.json', final, function (err) {
+                    console.log("JSON written to file was " + final)
                     if(err) 
                         return console.log(err);
                 });
@@ -54,11 +55,12 @@ CatalogDAO.prototype.getBestSellers = function(request, response)
     const fs = require('fs');
     this._connection.open(function(err, mongoclient){
         mongoclient.collection("catalog", function(err, collection){
-            collection.find({id: id, status: 'AVAIBLE'}).sort({"chave":-1}).toArray(function(err, result){
+            collection.find({status: 'AVAIBLE'}).sort({"chave":-1}).toArray(function(err, result){
                 var final = []
                 for(var i = 0; i < result.length; i++)
                     final.push(result[i].id)
-                fs.writeFile('Linx-Fullstack-Test/app/frontend/public/ranking/mostpopular.json', final, function (err) {
+                fs.writeFile('app/frontend/public/ranking/mostpopular.json', final, function (err) {
+                    console.log("JSON written to file was " + final)
                     if(err) 
                         return console.log(err);
                 });

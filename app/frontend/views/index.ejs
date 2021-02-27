@@ -5,31 +5,51 @@
         <link href="/css/flickity.css" rel="stylesheet">
     </head>
     <body>
-        <section class="o-posts bullets-mobile t-section -default">
-            <h2 class="a-title o-posts_title">Cases</h2>
-            <div class="o-posts_grid m-grid-post -carousel flickity-enabled is-draggable" data-component="carousel" data-component-options="{&quot;cellAlign&quot;: &quot;center&quot;, &quot;contain&quot;: true}" tabindex="0" data-inited="true">
+        <section>
+            <%
+                mostpopular
+                pricereduction
+            %>
+            <h2>Cases</h2>
+            <div class="-carousel flickity-enabled is-draggable" data-component="carousel" data-component-options="{&quot;cellAlign&quot;: &quot;center&quot;, &quot;contain&quot;: true}" tabindex="0" data-inited="true">
                 <div class="flickity-viewport" style="height: 404.875px; touch-action: pan-y;">
                     <div class="flickity-slider" style="left: 0px; transform: translateX(-66.65%);">
-                        <article class="m-post-preview m-grid-post_item" style="position: absolute; left: 0%;" aria-hidden="true">
-                            <div class="a-box m-post-preview_box">
-                                <div class="m-post-preview_head"> 
-                                <a href="https://www.linx.com.br/cases/zinzane-escolhe-a-linx-como-parceira-na-jornada-de-transformacao-digital/" data-component="modal-post" class="m-post-preview_img-hdr " data-inited="true"> 
-                                    <img class="m-post-preview_img lazy loaded" src="https://www.linx.com.br/app/uploads/2019/09/zinzane-case-linx-tecnologia-1-355x177.jpg" alt="zinzane-case-linx-tecnologia" data-ll-status="loaded"> 
+                        <article style="position: absolute; left: 0%;" aria-hidden="true">
+                            <div>
+                                <div> 
+                                <a href="https://www.linx.com.br/cases/zinzane-escolhe-a-linx-como-parceira-na-jornada-de-transformacao-digital/" data-component="modal-post"> 
+                                    <img src="https://www.linx.com.br/app/uploads/2019/09/zinzane-case-linx-tecnologia-1-355x177.jpg" alt="zinzane-case-linx-tecnologia"> 
                                 </a>
+                                </div>
+                                <div>
+                                    <h3>Zinzane escolhe a Linx como parceira na jornada de Transformação Digital</h3>
+                                </div>
+                                <div>
+                                    <a href="https://www.linx.com.br/cases/zinzane-escolhe-a-linx-como-parceira-na-jornada-de-transformacao-digital/" data-component="modal-post" class="a-btn -purple m-post-preview_cta" data-inited="true">Abrir</a>
+                                </div>
                             </div>
-                            <div class="m-post-preview_body">
-                                <h3 class="m-post-preview_title v-ellipsis">Zinzane escolhe a Linx como parceira na jornada de Transformação Digital</h3>
-                            </div>
-                            <div class="m-post-preview_foot"> 
-                                <a href="https://www.linx.com.br/cases/zinzane-escolhe-a-linx-como-parceira-na-jornada-de-transformacao-digital/" data-component="modal-post" class="a-btn -purple m-post-preview_cta" data-inited="true">Abrir</a>
-                            </div>
-                        </div>
-                    </article>
+                        </article>
                     </div>
                 </div>
-                <button class="flickity-button flickity-prev-next-button previous" type="button" aria-label="Previous"><svg class="flickity-button-icon" viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path></svg></button>
-                <button class="flickity-button flickity-prev-next-button next" type="button" aria-label="Next" disabled=""><svg class="flickity-button-icon" viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path></svg></button>
-                <ol class="flickity-page-dots"><li class="dot" aria-label="Page dot 1"></li><li class="dot" aria-label="Page dot 2"></li><li class="dot" aria-label="Page dot 3"></li><li class="dot" aria-label="Page dot 4"></li><li class="dot is-selected" aria-label="Page dot 5" aria-current="step"></li></ol>
+                <button class="flickity-button flickity-prev-next-button previous" type="button" aria-label="Previous">
+                    <svg class="flickity-button-icon" viewBox="0 0 100 100">
+                        <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow">
+                        </path>
+                    </svg>
+                </button>
+                <button class="flickity-button flickity-prev-next-button next" type="button" aria-label="Next" disabled="">
+                    <svg class="flickity-button-icon" viewBox="0 0 100 100">
+                        <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) ">
+                        </path>
+                    </svg>
+                </button>
+                <ol class="flickity-page-dots">
+                    <li class="dot is-selected" aria-label="Page dot 1"></li>
+                    <li class="dot" aria-label="Page dot 2"></li>
+                    <li class="dot" aria-label="Page dot 3"></li>
+                    <li class="dot" aria-label="Page dot 4"></li>
+                    <li class="dot" aria-label="Page dot 5" aria-current="step"></li>
+                </ol>
             </div>
         </section>
     </body>
