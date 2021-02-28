@@ -16,7 +16,8 @@ package.json
     "jquery": "^3.5.1",
     "jsdom": "^16.4.0",
     "line-reader": "^0.4.0",
-    "mongodb": "^2.2.9"
+    "mongodb": "^2.2.9",
+    "node-fetch": "^2.6.1"
   }
 ```
 | Plugin            | README                                                                      |
@@ -29,21 +30,25 @@ package.json
 | express-validator | [express-validator/README](https://www.npmjs.com/package/express-validator) |
 | jquery            | [jquery/README](https://www.npmjs.com/package/jquery)                       |
 | jsdom             | [jsdom/README](https://www.npmjs.com/package/jsdom)                         |
-| line-reader       | [line-reader/README](https://www.npmjs.com/package/line-reader)
+| line-reader       | [line-reader/README](https://www.npmjs.com/package/line-reader)             |
 | mongodb           | [mongodb/README](https://www.npmjs.com/package/mongodb)                     |
+| node-fetch        | [node-fetch/README](https://www.npmjs.com/package/node-fetch)               |
 
 
 ## Instructions
 - Download the repository;
-- Download MongoDB on your computer;
+- Download MongoDB on your computer (preferably with MongoDB compass);
+- Connect to MongoDB on localhost, port 27017 (the default one);
 - Run the script on 'Script_PopulateDB' named 'populateDB.js';
 - Run Node.js command 'node app' on root directory.
+- Access 'localhost:3000' to use the app.
 
 ## About the code
 
 - Many of the codes here could be optimized(looking at you timeouts), but unfortunately I'm not very knowledgeable with async and promises;
-- The only css used together with my own is [Flickity](https://flickity.metafizzy.co/), an API used for carousels;
+- The only js and css used together with my own is [Flickity](https://flickity.metafizzy.co/), an API used for carousels;
 - The MVC architecture was respected and used in most of the project.
+- The project is not 100% functional due to a problem in the catalog controller while calling the model files and other mongodb connection object issues.
 
 ## License
 GNU General Public License v3.0
