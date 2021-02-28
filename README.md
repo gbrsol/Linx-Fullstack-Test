@@ -48,7 +48,13 @@ package.json
 - Many of the codes here could be optimized(looking at you timeouts), but unfortunately I'm not very knowledgeable with async and promises;
 - The only js and css used together with my own is [Flickity](https://flickity.metafizzy.co/), an API used for carousels;
 - The MVC architecture was respected and used in most of the project.
-- The project is not 100% functional due to a problem in the catalog controller while calling the model files and other mongodb connection object issues.
+- The project is not 100% functional due to a problem in the catalog controller while calling a model method and other mongodb connection object issues;
+- The data to be used in the APIs(popularity and % of prices) were not found in the database, therefore the queries used were similar to the 'get' method.
+
+## APIs Documentation
+
+- [CatalogAPI](https://github.com/gbrsol/Linx-Fullstack-Test/blob/main/docs/documentation/pdf/CatalogAPI.pdf)
+- [RecommendationAPI](https://github.com/gbrsol/Linx-Fullstack-Test/blob/main/docs/documentation/pdf/RecommendationAPI.pdf)
 
 ## License
 GNU General Public License v3.0
