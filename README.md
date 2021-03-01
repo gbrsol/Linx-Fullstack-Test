@@ -40,7 +40,8 @@ package.json
 - Download MongoDB on your computer (preferably with MongoDB compass);
 - Connect to MongoDB on localhost, port 27017 (the default one);
 - Run the script on 'Script_PopulateDB' named 'populateDB.js';
-- Run Node.js command 'node app' on root directory.
+- Run 'npm install' to install the dependencies;
+- Run Node.js command 'node app' on root directory;
 - Access 'localhost:3000' to use the app.
 
 ## About the code
